@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ISManagement.Models;
 using ISManagement.ViewModels;
+using PagedList;
 
 namespace ISManagement.Controllers
 {
