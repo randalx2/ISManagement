@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace ISManagement.Models
 {
     using System;
@@ -22,7 +24,11 @@ namespace ISManagement.Models
     
         public int Id { get; set; }
         public int PersonId { get; set; }
+
+        [DisplayName("Account Number")]
         public string account_number { get; set; }
+
+        [DisplayName("Outstanding Balance")]
         public decimal outstanding_balance { get; set; }
     
         public virtual Person Person { get; set; }

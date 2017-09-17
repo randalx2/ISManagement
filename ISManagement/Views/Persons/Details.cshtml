@@ -1,4 +1,4 @@
-﻿@model ISManagement.Models.Person
+﻿@model ISManagement.ViewModels.PersonAccount
 
 @{
     ViewBag.Title = "Details";
@@ -12,32 +12,64 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.Person.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.name)
+            @Html.DisplayFor(model => model.Person.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.surname)
+            @Html.DisplayNameFor(model => model.Person.surname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.surname)
+            @Html.DisplayFor(model => model.Person.surname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.id_number)
+            @Html.DisplayNameFor(model => model.Person.id_number)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.id_number)
+            @Html.DisplayFor(model => model.Person.id_number)
         </dd>
 
     </dl>
 </div>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            Account Number
+        </th>
+        <th>
+            Outstanding Balance
+        </th>
+        <th>
+            Account Details
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Accounts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.account_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.outstanding_balance)
+            </td>
+            <td>
+                @Html.ActionLink("View Details", "Details", new { id=item.Id }) 
+            </td>
+        </tr>
+    }
+
+</table>
+
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Person Details", "Edit", new {id = Model.Person.Id}) |
+    @Html.ActionLink("Back to List of Persons", "Index")
 </p>

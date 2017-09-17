@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace ISManagement.Models
 {
     using System;
@@ -21,8 +23,14 @@ namespace ISManagement.Models
         }
     
         public int Id { get; set; }
+
+        [DisplayName("First Name")]
         public string name { get; set; }
+
+        [DisplayName("Last Name")]
         public string surname { get; set; }
+
+        [DisplayName("ID Number")]
         public string id_number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
