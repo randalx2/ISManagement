@@ -36,6 +36,7 @@ namespace ISManagement.Controllers
             else
             {
                 var accounts = person.Accounts.ToList();
+
                 var viewModel = new PersonAccount
                 {
                     Person = person,

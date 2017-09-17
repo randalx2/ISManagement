@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Person Details</h2>
 
 <div>
     <h4>Person</h4>
@@ -38,6 +38,7 @@
     </dl>
 </div>
 
+<h3>Accounts List</h3>
 <table class="table table-bordered table-hover">
     <tr>
         <th>
@@ -61,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.outstanding_balance)
             </td>
             <td>
-                @Html.ActionLink("View Details", "Details", new { id=item.Id }) 
+                @Html.ActionLink("View Details", "Details", new { controller = "Accounts", action = "Details", id = item.Person.Id}) 
             </td>
         </tr>
     }

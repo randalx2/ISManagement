@@ -197,6 +197,7 @@
       <DependentUpon>ISModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AccountTransactions.cs" />
     <Compile Include="ViewModels\PersonAccount.cs" />
   </ItemGroup>
   <ItemGroup>

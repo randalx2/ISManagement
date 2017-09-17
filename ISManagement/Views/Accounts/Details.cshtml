@@ -1,4 +1,5 @@
-﻿@model ISManagement.Models.Account
+﻿@using Microsoft.Ajax.Utilities
+@model ISManagement.ViewModels.AccountTransactions
 
 @{
     ViewBag.Title = "Details";
@@ -8,36 +9,41 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Account</h4>
+    <h4>Account Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.account_number)
+            @Html.DisplayNameFor(model => model.Account.Person.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.account_number)
+            @Html.DisplayFor(model => model.Account.Person.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Person.surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Person.surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.account_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.account_number)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.outstanding_balance)
+            @Html.DisplayNameFor(model => model.Account.outstanding_balance)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.outstanding_balance)
+            @Html.DisplayFor(model => model.Account.outstanding_balance)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Person.name)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Account.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ISManagement.Models;
+using ISManagement.ViewModels;
 
 namespace ISManagement.Controllers
 {
@@ -33,7 +34,18 @@ namespace ISManagement.Controllers
             {
                 return HttpNotFound();
             }
-            return View(account);
+            else
+            {
+                var transactions = account.Transactions.ToList();
+                var viewModel = new AccountTransactions
+                {
+                    Account = account,
+                    Transactions = transactions
+                };
+
+                return View(viewModel);
+            }
+            //return View(account);
         }
 
         // GET: Accounts/Create
