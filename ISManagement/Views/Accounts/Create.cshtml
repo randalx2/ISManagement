@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create Account</h2>
-
+<h2>Create New Account For Existing Persons</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -16,6 +15,7 @@
         <h4>Account</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.PersonId, "PersonId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

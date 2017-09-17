@@ -39,6 +39,10 @@
 </div>
 
 <h3>Accounts List</h3>
+<p>
+    @Html.ActionLink("New Account", "Create", new { controller = "Accounts", action = "Create", id = Model.Person.Id }, new { @class = "btn btn-primary" })
+</p>
+
 <table class="table table-bordered table-hover">
     <tr>
         <th>

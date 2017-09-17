@@ -43,6 +43,54 @@
         </dd>
     </dl>
 </div>
+
+<h3>Transactions List</h3>
+<p>
+    @Html.ActionLink("New Transaction", "Create", new { controller = "Transactions", action = "Create", id = Model.Account.Id }, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Transaction Date
+        </th>
+        <th>
+            Capture Date
+        </th>
+        <th>
+            Transaction Details
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Transactions)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.transaction_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capture_date)
+            </td>
+            <td>
+                @Html.ActionLink("View Details", "Details", new { controller = "Transactions", action = "Details", id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Account.Id }) |
     @Html.ActionLink("Back to List", "Index")
