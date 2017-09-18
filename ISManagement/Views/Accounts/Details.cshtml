@@ -46,7 +46,7 @@
 
 <h3>Transactions List</h3>
 <p>
-    @Html.ActionLink("New Transaction", "Create", new { controller = "Transactions", action = "Create", id = Model.Account.Id }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Transaction", "Create", new { controller = "Transactions", action = "Create", Model.Account.Id}, new { @class = "btn btn-primary" })
 </p>
 
 <table class="table table-bordered table-hover">

@@ -21,11 +21,13 @@ namespace ISManagement
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
+                      "~/Scripts/respond.js",
+                      "~/Scripts/jquery-ui-1.12.1.js"));
+           
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Site.css",
+                      "~/Content/themes/base/jquery-ui.css"));
         }
     }
 }

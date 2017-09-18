@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+using System.Text.RegularExpressions;
+
 namespace ISManagement.Models
 {
     using System;
@@ -15,10 +18,20 @@ namespace ISManagement.Models
     public partial class Transaction
     {
         public int Id { get; set; }
+
+        [DisplayName("Account ID")]
         public int AccountId { get; set; }
+
+        [DisplayName("Transaction Date")]
         public System.DateTime transaction_date { get; set; }
+
+        [DisplayName("Capture Date")]
         public System.DateTime capture_date { get; set; }
+
+        [DisplayName("Amount")]
         public decimal amount { get; set; }
+
+        [DisplayName("Description")]
         public string description { get; set; }
     
         public virtual Account Account { get; set; }
