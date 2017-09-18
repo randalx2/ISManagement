@@ -29,7 +29,7 @@ namespace ISManagement
 
            
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-cerulean.css",
                       "~/Content/Site.css",
                       "~/Content/themes/base/jquery-ui.css",
                       "~/Content/DataTables/css/dataTables.bootstrap.css",
