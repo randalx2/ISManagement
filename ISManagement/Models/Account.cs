@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ISManagement.Models
 {
@@ -25,9 +26,11 @@ namespace ISManagement.Models
         public int Id { get; set; }
         public int PersonId { get; set; }
 
+        [Required]
         [DisplayName("Account Number")]
         public string account_number { get; set; }
 
+        [DataType(DataType.Currency)]
         [DisplayName("Outstanding Balance")]
         public decimal outstanding_balance { get; set; }
     

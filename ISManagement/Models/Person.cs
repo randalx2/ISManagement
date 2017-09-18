@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ISManagement.Models
 {
@@ -24,12 +25,15 @@ namespace ISManagement.Models
     
         public int Id { get; set; }
 
+        [Required]
         [DisplayName("First Name")]
         public string name { get; set; }
 
+        [Required]
         [DisplayName("Last Name")]
         public string surname { get; set; }
 
+        [Required]
         [DisplayName("ID Number")]
         public string id_number { get; set; }
     
