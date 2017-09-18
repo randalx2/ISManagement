@@ -46,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.capture_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.capture_date, new { htmlAttributes = new { @class = "date-picker" } })
+                @Html.EditorFor(model => model.capture_date, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
                 @Html.ValidationMessageFor(model => model.capture_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -54,8 +54,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.amount, new {htmlAttributes = new {@class = "form-control"}})
+                @{ Html.EnableClientValidation(true); }
             </div>
         </div>
 
@@ -76,7 +77,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href=@Url.Action("Details", "Accounts", new {id = Model.Account.Id})>Back to Transactions List</a>
 </div>
 
 @section Scripts {

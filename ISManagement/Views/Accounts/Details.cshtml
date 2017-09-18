@@ -92,6 +92,6 @@
 </table>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Account.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit Account Details", "Edit", new { id = Model.Account.Id }) |
+    <a href=@Url.Action("Details", "Persons", new {id = Model.Account.Person.Id})>Back to Accounts List</a>
 </p>

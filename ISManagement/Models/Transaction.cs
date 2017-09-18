@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace ISManagement.Models
@@ -28,8 +29,10 @@ namespace ISManagement.Models
         [DisplayName("Capture Date")]
         public System.DateTime capture_date { get; set; }
 
+        [Required]
         [DisplayName("Amount")]
         public decimal amount { get; set; }
+
 
         [DisplayName("Description")]
         public string description { get; set; }
