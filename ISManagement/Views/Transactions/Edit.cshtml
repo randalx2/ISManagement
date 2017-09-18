@@ -5,7 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<!-- Code to wire up DatePicker -->
+<script src="@Url.Content("~/Scripts/jquery-1.12.4.js")"></script>
+<script type="text/javascript">
+    $(function () {
+        // This will make every element with the class "date-picker" into a DatePicker element
+        $('.date-picker').datepicker();
+    })
+</script>
+
+<h2>Edit Transaction</h2>
 
 
 @using (Html.BeginForm())
@@ -13,7 +22,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Edit Transaction</h4>
+        <h4>Edit</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -29,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.transaction_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.transaction_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.transaction_date, new { htmlAttributes = new { @class = "date-picker" } })
                 @Html.ValidationMessageFor(model => model.transaction_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -37,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.capture_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.capture_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.capture_date, new { htmlAttributes = new { @class = "date-picker" } })
                 @Html.ValidationMessageFor(model => model.capture_date, "", new { @class = "text-danger" })
             </div>
         </div>
