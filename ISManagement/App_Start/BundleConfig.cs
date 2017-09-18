@@ -8,9 +8,15 @@ namespace ISManagement
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //Custom Bundle
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui-1.12.1.js"));
+                        "~/Scripts/jquery-ui-1.12.1.js",
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/respond.js",
+                        "~/Scripts/DataTables/jquery.dataTables.js",
+                        "~/Scripts/DataTables/dataTables.bootstrap.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -20,14 +26,12 @@ namespace ISManagement
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/Site.css",
-                      "~/Content/themes/base/jquery-ui.css"));
+                      "~/Content/themes/base/jquery-ui.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap.css"));
         }
     }
 }
