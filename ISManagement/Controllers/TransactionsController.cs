@@ -43,6 +43,30 @@ namespace ISManagement.Controllers
             return View();
         }
 
+        // GET: Transactions/Create/5
+        [HttpGet]
+        public ActionResult Create(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Transaction transaction = db.Transactions.Find(id);
+            if (transaction == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                transaction.amount = 0;
+                transaction.description = "";
+                transaction.capture_date = DateTime.Now;
+                transaction.transaction_date = null;
+            }
+            ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
+            return View(transaction);
+        }
+
         // POST: Transactions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -52,17 +76,9 @@ namespace ISManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Subtract his transaction from the accounts outstanding balance
-                if (transaction.amount != 0)
-                {
-                    //If negative amount that would represent a debit 
-                    //If positive amount that would represent a credit
-                    transaction.Account.outstanding_balance = transaction.Account.outstanding_balance + transaction.amount;
-                }
-
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Accounts", new { id = transaction.AccountId });
             }
 
             ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
@@ -96,7 +112,7 @@ namespace ISManagement.Controllers
             {
                 db.Entry(transaction).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Accounts", new {id=transaction.AccountId});
             }
             ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
             return View(transaction);

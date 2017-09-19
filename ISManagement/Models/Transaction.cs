@@ -24,7 +24,7 @@ namespace ISManagement.Models
         public int AccountId { get; set; }
 
         [DisplayName("Transaction Date")]
-        public System.DateTime transaction_date { get; set; }
+        public System.DateTime? transaction_date { get; set; }
 
         [DisplayName("Capture Date")]
         public System.DateTime capture_date { get; set; }

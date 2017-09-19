@@ -35,8 +35,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.outstanding_balance, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.outstanding_balance, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.outstanding_balance, "", new { @class = "text-danger" })
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.outstanding_balance, new {htmlAttributes = new {@class = "form-control", @readonly="readonly"}})
+                @{ Html.EnableClientValidation(true); }
             </div>
         </div>
 
@@ -49,7 +50,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href=@Url.Action("Details", "Persons", new {id = Model.Person.Id})>Back to Accounts List</a>
 </div>
 
 @section Scripts {

@@ -88,7 +88,7 @@ namespace ISManagement.Controllers
             {
                 db.Accounts.Add(account);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Persons", new { id = account.PersonId });
             }
 
             ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
@@ -123,7 +123,7 @@ namespace ISManagement.Controllers
             {
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Persons", new { id = account.PersonId });
             }
             ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
             return View(account);
