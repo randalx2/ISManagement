@@ -207,6 +207,7 @@
     <Compile Include="ViewModels\PersonAccount.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\InteractiveMVC_Tables_With_Data.sql" />
     <Content Include="Content\bootstrap-cerulean.css" />
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -570,9 +571,7 @@
     <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
