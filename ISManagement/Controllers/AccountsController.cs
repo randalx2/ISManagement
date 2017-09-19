@@ -56,17 +56,11 @@ namespace ISManagement.Controllers
         }
 
         // GET: Accounts/Create/5
+        //NB: This accepts the parameter as the PersonId
         [HttpGet]
         public ActionResult Create(int id)
         {
             
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            //Account account = db.Accounts.Find(id);
-
             //Check if the person has at least one account already on the system
             var account = (from u in db.Accounts
                            where u.PersonId == id

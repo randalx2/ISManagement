@@ -44,27 +44,43 @@ namespace ISManagement.Controllers
         }
 
         // GET: Transactions/Create/5
+        //NB: This accepts the parameter as the AccountId not the PersonId
         [HttpGet]
-        public ActionResult Create(int? id)
+        public ActionResult Create(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Transaction transaction = db.Transactions.Find(id);
+            //Check for at least one transaction under this account
+            var transaction = (from u in db.Transactions
+                                where u.AccountId == id
+                                select u).FirstOrDefault();
+
+            var account = db.Accounts.Find(id);
+
             if (transaction == null)
             {
-                return HttpNotFound();
+                var newTransaction = new Transaction
+                {
+                    capture_date = DateTime.Now,
+                    transaction_date = null,
+                    amount = 0,
+                    description = "",
+                    AccountId = id,
+                    Account = account
+                };
+
+                ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", newTransaction.AccountId);
+                return View(newTransaction);
             }
             else
             {
-                transaction.amount = 0;
-                transaction.description = "";
                 transaction.capture_date = DateTime.Now;
                 transaction.transaction_date = null;
+                transaction.amount = 0;
+                transaction.description = "";
+
+                ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
+                return View(transaction);
             }
-            ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
-            return View(transaction);
+
         }
 
         // POST: Transactions/Create
