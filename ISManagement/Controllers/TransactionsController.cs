@@ -44,6 +44,7 @@ namespace ISManagement.Controllers
         }
 
         // GET: Transactions/Create/5
+        /*
         [HttpGet]
         public ActionResult Create(int? id)
         {
@@ -51,6 +52,8 @@ namespace ISManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            /*
             Transaction transaction = db.Transactions.Find(id);
             if (transaction == null)
             {
@@ -63,9 +66,9 @@ namespace ISManagement.Controllers
                 transaction.capture_date = DateTime.Now;
                 transaction.transaction_date = null;
             }
-            ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
-            return View(transaction);
+            
         }
+        */
 
         // POST: Transactions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -80,8 +83,8 @@ namespace ISManagement.Controllers
 
                 //Update the account outstanding balancing
                 var account = (from u in db.Accounts
-                                    where u.Id == transaction.AccountId 
-                                    select u).FirstOrDefault();
+                              where u.Id == transaction.AccountId
+                              select u).FirstOrDefault();
 
                 if (account != null)
                 {
@@ -122,6 +125,17 @@ namespace ISManagement.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(transaction).State = EntityState.Modified;
+
+                //Update the account outstanding balancing
+                var account = (from u in db.Accounts
+                    where u.Id == transaction.AccountId
+                    select u).FirstOrDefault();
+
+                if (account != null)
+                {
+                    account.outstanding_balance = account.outstanding_balance + transaction.amount;
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Details", "Accounts", new {id=transaction.AccountId});
             }
