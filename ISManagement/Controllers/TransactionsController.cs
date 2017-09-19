@@ -77,6 +77,17 @@ namespace ISManagement.Controllers
             if (ModelState.IsValid)
             {
                 db.Transactions.Add(transaction);
+
+                //Update the account outstanding balancing
+                var account = (from u in db.Accounts
+                                    where u.Id == transaction.AccountId 
+                                    select u).FirstOrDefault();
+
+                if (account != null)
+                {
+                    account.outstanding_balance = account.outstanding_balance + transaction.amount;
+                }
+                
                 db.SaveChanges();
                 return RedirectToAction("Details", "Accounts", new { id = transaction.AccountId });
             }

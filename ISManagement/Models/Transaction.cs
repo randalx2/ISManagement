@@ -23,6 +23,7 @@ namespace ISManagement.Models
         [DisplayName("Account ID")]
         public int AccountId { get; set; }
 
+        [Required]
         [DisplayName("Transaction Date")]
         public System.DateTime? transaction_date { get; set; }
 
