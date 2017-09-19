@@ -10,7 +10,8 @@
 <script type="text/javascript">
     $(function () {
         // This will make every element with the class "date-picker" into a DatePicker element
-        $('.date-picker').datepicker();
+        //Prevent future dates from being added
+        $('.date-picker').datepicker({maxDate:0});
     })
 </script>
 
