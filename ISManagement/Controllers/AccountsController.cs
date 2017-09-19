@@ -55,6 +55,28 @@ namespace ISManagement.Controllers
             return View();
         }
 
+        // GET: Accounts/Create/5
+        [HttpGet]
+        public ActionResult Create(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                account.account_number = "";
+                account.outstanding_balance = 0;
+            }
+            ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
+            return View(account);
+        }
+
         // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

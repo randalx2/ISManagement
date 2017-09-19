@@ -52,6 +52,14 @@ namespace ISManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Subtract his transaction from the accounts outstanding balance
+                if (transaction.amount != 0)
+                {
+                    //If negative amount that would represent a debit 
+                    //If positive amount that would represent a credit
+                    transaction.Account.outstanding_balance = transaction.Account.outstanding_balance + transaction.amount;
+                }
+
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
                 return RedirectToAction("Index");
