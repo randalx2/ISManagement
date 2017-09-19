@@ -57,24 +57,44 @@ namespace ISManagement.Controllers
 
         // GET: Accounts/Create/5
         [HttpGet]
-        public ActionResult Create(int? id)
+        public ActionResult Create(int id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+
+            //Account account = db.Accounts.Find(id);
+
+            //Check if the person has at least one account already on the system
+            var account = (from u in db.Accounts
+                           where u.PersonId == id
+                           select u).FirstOrDefault();
+
+            var person = db.Persons.Find(id);
+
             if (account == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                var newAccount = new Account
+                {
+                    account_number = "",
+                    outstanding_balance = 0,
+                    PersonId = id,
+                    Person = person
+                };
+
+                ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", newAccount.PersonId);
+                return View(newAccount);
             }
             else
             {
                 account.account_number = "";
                 account.outstanding_balance = 0;
-            }
-            ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
-            return View(account);
+                ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
+                return View(account);
+            }          
         }
 
 
