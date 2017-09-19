@@ -44,7 +44,6 @@ namespace ISManagement.Controllers
         }
 
         // GET: Transactions/Create/5
-        /*
         [HttpGet]
         public ActionResult Create(int? id)
         {
@@ -52,8 +51,6 @@ namespace ISManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            /*
             Transaction transaction = db.Transactions.Find(id);
             if (transaction == null)
             {
@@ -66,9 +63,9 @@ namespace ISManagement.Controllers
                 transaction.capture_date = DateTime.Now;
                 transaction.transaction_date = null;
             }
-            
+            ViewBag.AccountId = new SelectList(db.Accounts, "Id", "account_number", transaction.AccountId);
+            return View(transaction);
         }
-        */
 
         // POST: Transactions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

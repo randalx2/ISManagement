@@ -56,7 +56,6 @@ namespace ISManagement.Controllers
         }
 
         // GET: Accounts/Create/5
-        /*
         [HttpGet]
         public ActionResult Create(int? id)
         {
@@ -77,7 +76,8 @@ namespace ISManagement.Controllers
             ViewBag.PersonId = new SelectList(db.Persons, "Id", "name", account.PersonId);
             return View(account);
         }
-        */
+
+
 
         // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
